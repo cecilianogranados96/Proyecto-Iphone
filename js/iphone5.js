@@ -108,7 +108,7 @@ function unlock(){
 	});
 }
 
-$('#contacto').on('click', function(){
+function iframe(){
 	$("#phone-footer").fadeOut("normal",function(){
 		$("#phone-header").slideUp("fast",function(){
 			$("#icons-container").fadeOut();
@@ -116,11 +116,11 @@ $('#contacto').on('click', function(){
 			$("#contactos").fadeIn();
 			$("#headline").fadeOut();
 			$("#iphone-display").css("background","#f8f8f8");
-			$("#headline2").fadeIn();
+			$("#headline2").fadeOut();
 			console.log("CLICK ")
 		});
 	});
-});
+}
 
 $('#home-button').on('click', function(){
 	$("#phone-footer").fadeOut("normal",function(){

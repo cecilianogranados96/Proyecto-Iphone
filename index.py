@@ -5,6 +5,13 @@ print('''
 <head>
 <link href="css/iphone5.css" rel="stylesheet" type="text/css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script>
+			function cambiar_url(url) {
+				document.getElementById('frame_contenido').src = url;
+				iframe()
+			}
+		</script>
+
 </head>
 <body>
 	<div id="main">
@@ -52,8 +59,8 @@ print('''
 							</div>
 						</div>
 						
-				<div id="contactos" style="    display: none;">
-					<iframe src="contacto.py" scrolling="no" ></iframe>
+				<div id="contactos" style="display: none;">
+					<iframe src="" id="frame_contenido" scrolling="no" ></iframe>
 				</div>
 						
 						
@@ -287,19 +294,14 @@ print('''
 								</div>
 								<span class="icon-title">Brujula</span>
 							</div>
+							
 							<div class="app-icon">
-								<div id="settings">
-									<div class="round">
-										<ul class="gear"></ul>
-										<ul class="gear"></ul>
-									</div>
-									<hr></hr>
-									<hr></hr>
-									<hr></hr>
-									<span class="dot"></span>
-								</div>
-								<span class="icon-title">Configuraci&oacute;n</span>
+								<img src="css/master.png" class="contacto" id="contacto" onclick="cambiar_url('MasterMind/index.html');" >
+								<span class="icon-title">MasterMind</span>
 							</div>
+							
+							
+			
 						</div>
 						<div id="dock">
 							<div class="app-icon">
@@ -314,7 +316,7 @@ print('''
 							
 							
 							<div class="app-icon">
-								<img src="css/contactos.png" class="contacto" id="contacto">
+								<img onclick="cambiar_url('Contactos/contacto.py');" src="css/contactos.png" class="contacto" id="contacto">
 								<span class="icon-title">Contactos</span>
 							</div>
 							
@@ -347,7 +349,7 @@ print('''
 	<center>
 	<img src="css/logo.jpg" width="198px"><br><br>
 	
-			<h1>Proyecto # 1 de Taller de programacion</h1>
+			<h1>Proyecto # 2 de Taller de programacion</h1>
 			<p>
 				
 					Jose Andres Ceciliano Granados<br>
@@ -357,7 +359,7 @@ print('''
 				utilizando python como lenguaje manejador de datos y una interfaz web como recurso principal.
 				
 			</p><br><br>
-			<p>Desliza el recuadro o preciona el boton de Home para desbloquear el iphone, luego la funcion principal es la agenda de contacto, sin embargo nota las funciones de reloj en movimiento (icono)</p>
+			<p>Desliza el recuadro o preciona el boton de Home para desbloquear el iphone, luego la funcion principal es la agenda de contacto y el juego MasterMind, sin embargo nota las funciones de reloj en movimiento (icono)</p>
 		</div>
 	</div>
 </body>

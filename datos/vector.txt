@@ -1,3 +1,0 @@
-86059873,Jose A,Ceciliano G,IMG_0040.JPG,Direccion,None,None,Commercial DEMO - 05.mp3,Trabajo~CASA~FAX~OTROS~,EMAIL PERSONAL~EMAIL TRABAJO~Email otro~,None~0015-12-15~1515-12-15~DEPORTES~DIRECCION TRANAJO~ENTRETENIMIENTO~FAMILIA~NOTAS~PROFESION~
-86059879,Daniela,Alfaro,2015-11-09 20.22.57.jpg,None,TEC,TEC,None,~~~~,~~~,~~~~~~~~~
-99999999,Jhon,Doe,None,None,None,None,None,~~~~,~~~,ejmplo~2016-12-15~~~~~~~~
