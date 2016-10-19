@@ -1,15 +1,23 @@
 #!../python35/python.exe
 print ("Content-type: text/html\n")
-from funciones import * 
-config = configuraciones()
-pocision = posicion();
-dificultad = ["F<br>A<br>C<br>I<br>L","M<br>E<br>D<br>I<br>O","D<br>I<br>F<br>I<br>C<br>I<br>L"]
-r = list(random())
-borrar_datos_ateriores = open('datos/actual.dat', 'w')
-random = r[0]+","+r[1]+","+r[2]+","+r[3]
+from funciones import *
 import cgi
 import cgitb; cgitb.enable()
 form = cgi.FieldStorage()
+
+config = configuraciones()
+pocision = posicion();
+dificultad = ["F<br>A<br>C<br>I<br>L","M<br>E<br>D<br>I<br>O","D<br>I<br>F<br>I<br>C<br>I<br>L"]
+
+tipo_partida = form.getfirst("tipo_partida");
+if int(tipo_partida) == 0:	
+	borrar_datos_ateriores = open('datos/actual.dat', 'w')
+	r = list(random(1))
+else:
+	r = list(random(0))
+	
+random = r[0]+","+r[1]+","+r[2]+","+r[3]
+
 nombre = form.getfirst("nombre");
 if (int(config[1]) == 1):
 	jugadas = 8
@@ -27,8 +35,11 @@ print('''<html>
 if int(config[4]) != 3:
 	if int(config[4]) == 1:
 		tiempo = int(config[5])
-	else: 
-		tiempo = int(config[6])
+	else:
+		if int(config[4]) == 4:
+			tiempo = int(config[7])
+		else:
+			tiempo = int(config[6])
 	print('''
 			time = '''+str(tiempo)+'''
 		var hours = Math.floor( time / 3600 );  
@@ -79,9 +90,7 @@ if int(config[4]) != 3:
 					$('#v4').val($(".4 div").last().attr('id'));
 
 				}''')
-	print('''
 
-		''')
 print('''	});//]]> 
 			var arr2 = 1;
 			se = 0
@@ -94,7 +103,7 @@ print('''	});//]]>
 				return se
 			}
 			function iniciar(){
-				$.post("proceso.py", {dificultad: "'''+dificultad[int(config[1])-1]+'''",tiempo: se,input: $('#v1').val()+","+$('#v2').val()+","+$('#v3').val()+","+$('#v4').val() ,num : arr2,orden_real: "'''+random+'''", nombre: "'''+nombre+'''" }, function(htmlexterno){
+				$.post("proceso.py", {dificultad: "'''+dificultad[int(config[1])-1]+'''",tiempo: se,input: $('#v1').val()+","+$('#v2').val()+","+$('#v3').val()+","+$('#v4').val() ,num : arr2,orden_real: "'''+random+'''", nombre: "'''+nombre+'''",tipo_partida:"'''+tipo_partida+'''" }, function(htmlexterno){
 					arr2 += 1;
 					if (arr2 <= '''+str(jugadas)+'''){
 						$("#resultado").html( htmlexterno + + "<br>" + $("#resultado").html() + "<br><br>");
@@ -103,16 +112,34 @@ print('''	});//]]>
 						$('#v3').val('');
 						$('#v4').val('');
 						$("#containers .item").remove();
-						
 						reiniciar();
 					}else{
 						$("#resultado").html( htmlexterno + + "<br>" + $("#resultado").html() + "<br><br>");
 						window.location="perdio.py";
 					}
-
 				});
 			}
-
+			
+			function carga(){
+				var vec = ['''+carga()+'''];
+				vec.reverse();
+				for (var i=0; i<(vec.length); i++){
+					$.post("proceso.py", {
+					dificultad: "'''+dificultad[int(config[1])-1]+'''",
+					tiempo: 0,
+					input: vec[i] ,
+					num : arr2,
+					orden_real: "'''+random+'''", 
+					nombre: "'''+nombre+'''",
+					tipo_partida: "None"
+					}, 
+					function(htmlexterno){
+						$("#resultado").html( htmlexterno + + "<br>" + $("#resultado").html() + "<br><br>");
+				
+					});
+					arr2 +=1
+				}
+			}
 	var Handle_Mi_Timer = null;
     function Iniciar_Timer() {
 		$("#segundos").html(seconds);
@@ -128,7 +155,6 @@ print('''	});//]]>
             window.clearInterval(Handle_Mi_Timer);
             Handle_Mi_Timer = null;
         }
-	
     }
 
     function Mi_Timer() {
@@ -159,6 +185,10 @@ if int(config[4]) == 1:
 else: 
 	if int(config[4]) == 2:
 		print('''window.location="perdio.py";''')
+	else:
+		if int(config[4]) == 4:
+			#juego_multi()
+			print('''alert("Tiempo terminado para el nivel"); location.reload()''')
 
 print('''	Detener_Timer();
 			Iniciar_Timer();
@@ -170,11 +200,13 @@ function reiniciar(){
 }
 
 ''')
+if str(tipo_partida) != "None":	
+	print('''carga();''')
 print('''
 </script>		
 	</head>
 	<body>
-		<div style="width: 320px;height: 568px; position: absolute; background-color:#8fccaf;    background-color: #8fccaf;background-image: url(../css/master_logo.png); background-repeat: no-repeat;background-position: 56px 144px; ">
+		<div style="width: 320px;height: 568px; position: absolute; background-color:'''+config[8]+''';background-image: url(../css/master_logo.png); background-repeat: no-repeat;background-position: 56px 144px; ">
 
 			<div class="'''+pocision[0]+'''">
 				<table id="containers" style="width: 100%; margin-top:6px; ">

@@ -1,8 +1,8 @@
 #!../python35/python.exe
 print ("Content-type: text/html\n")
+from funciones import * 
+config = configuraciones()
 print('''
-
-
 	<html>
 	<head>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>		
@@ -11,7 +11,7 @@ print('''
 		<link type="text/css" rel="stylesheet" href="atomo.css">
 		<link type="text/css" rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 	</head>
-	<div style="border-style:solid; width: 320px;height: 568px; position: absolute; background-color:#8fccaf; overflow-x: hidden;">
+	<div style="border-style:solid; width: 320px;height: 568px; position: absolute; background-color:'''+config[8]+'''; overflow-x: hidden;">
 
 	<img src="../css/master_logo.png" style="position: absolute;width: 85px;margin-top: 266px;margin-left: 113px;">
 	

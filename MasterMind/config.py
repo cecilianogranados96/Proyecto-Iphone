@@ -8,6 +8,8 @@ elementos =  int(config[3]);
 reloj =  int(config[4]); 
 tiempo_jugada = int(config[5])
 tiempo_juego = int(config[6])
+tiempo_multinivel = int(config[7])
+
 print('''
 	<html>
 	<head>
@@ -17,9 +19,7 @@ print('''
 		<link type="text/css" rel="stylesheet" href="atomo.css">
 		<link type="text/css" rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 	</head>
-	<div style="border-style:solid; width: 320px;height: 568px; position: absolute; background-color:#8fccaf; overflow-x: hidden;">
-
-	
+	<div style="border-style:solid; width: 320px;height: 568px; position: absolute; background-color:'''+config[8]+'''; overflow-x: hidden;">	
 		<table style='width: 100%;' >
 	<tr>
 		<td>
@@ -44,7 +44,7 @@ print('''
 
 <hr>
 
-  <label class="control-label" for="dificuldad"><center>Dificultad</label><br>
+<label class="control-label" for="dificuldad"><center>Dificultad</label><br>
 	  
     <label class="radio-inline" for="dificuldad-0">
       <input type="radio" name="dificuldad" id="dificuldad-0" value="1" '''+ str(seleccionado(1,dificuldad)) +'''>
@@ -59,6 +59,7 @@ print('''
       Dificil (6 jugadas)
     </label>
 
+	
 <hr>
 
   <label class="control-label" for="pocision"><center>Posicion </label>
@@ -111,15 +112,34 @@ print('''
 		<input name="tiempo_juego" type="text" class="form-control input-md" style="width: 60px;float: right;" value="'''+str(tiempo_juego)+'''">  
     </label> 
 	<br>
+    <label class="radio-inline" for="reloj-1">
+      <input type="radio" name="reloj"  value="4" '''+ str(seleccionado(4,reloj)) +'''>
+      Cronometro Juego Multinivel<br>
+	  		<p style="float: left;margin-top: 7px;">Tiempo en Segundos: </p>
+		<input name="tiempo_multinivel" type="text" class="form-control input-md" style="width: 60px;float: right;" value="'''+str(tiempo_multinivel)+'''">  
+    </label> 
+	<br>
     <label class="radio-inline" for="reloj-2">
       <input type="radio" name="reloj" value="3" '''+ str(seleccionado(3,reloj)) +'''>
       No
     </label>
 
 <br><hr><br>	
+	
+	
+
+
+  <label class="control-label" for="reloj"><center>Color de Fondo</label>
+<br><br>
+ <input type="color" name="fcolor" value="'''+config[8]+'''" style="width: 160px;">
+ 
+
+<br><hr><br>	
  <center><input type="submit" class="btn btn-lg btn-primary"  value="Guardar"></center>
 </fieldset>
 </form>
+	<br><br><br><br><br><center>
+	<a class="btn btn-lg btn-warning" href="reestablecer.py">Restablecer Configuracion</a>
 
 			
 		</body>

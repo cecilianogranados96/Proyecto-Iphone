@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 print ("Content-type: text/html\n")
 from funciones import * 
+config = configuraciones()
 import cgi
 import cgitb; cgitb.enable()
 form = cgi.FieldStorage()
@@ -18,8 +19,11 @@ print('''
 		<link type="text/css" rel="stylesheet" href="juego.css">
 		<link type="text/css" rel="stylesheet" href="atomo.css">
 		<link type="text/css" rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
-	</head>
-	<div style="border-style:solid; width: 320px;height: 568px; position: absolute; background-color:#8fccaf; overflow-x: hidden;">
+		<script type="text/javascript">
+function imprSelec(muestra)
+{var ficha=document.getElementById(muestra);var ventimp=window.open(' ','popimpr');ventimp.document.write(ficha.innerHTML);ventimp.document.close();ventimp.print();ventimp.close();}
+</script></head>
+	<div id="muestra"  style="border-style:solid; width: 320px;height: 568px; position: absolute; background-color:'''+config[8]+'''; overflow-x: hidden;">
 		<table style='width: 100%;'  >
 	<tr>
 		<td>
@@ -35,7 +39,11 @@ print('''
 	</table>
 	<br>
 <center style="font-size:30px;color:#FFF;">Top 10</center>
+	<center>
 
+	<a href="javascript:imprSelec('muestra')" class="btn btn-lg btn-primary">	<span class="glyphicon glyphicon-print" aria-hidden="true"> Imprimir</span></a>
+</center>
+	
 	<br>	<table  style="width: 100%;height:70%;" class="table table-bordered" >
 		<tr>
 			<td>

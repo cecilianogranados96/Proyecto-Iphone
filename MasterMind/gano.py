@@ -1,5 +1,24 @@
 #!../python35/python.exe
 print ("Content-type: text/html\n")
+from funciones import * 
+import cgi
+import cgitb; cgitb.enable()
+form = cgi.FieldStorage()
+
+borrar_datos_ateriores = open('datos/actual.dat', 'w')
+config = configuraciones()
+random(1)
+
+
+if int(config[4]) == 4:
+	juego_multi()
+	print('''
+	<script>
+		alert("Ganaste el nivel continua avanzando");
+		window.location="juego.py?nombre='''+form.getfirst("nombre")+'''&tipo_partida='''+form.getfirst("tipo_partida")+'''";
+	</script>''')
+
+	
 print('''<html>
 	<head>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>		
@@ -9,7 +28,7 @@ print('''<html>
 		<link type="text/css" rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 	</head>
 		
-	<div style="border-style:solid; width: 320px;height: 568px; position: absolute; background-color:#8fccaf; ">
+	<div style="border-style:solid; width: 320px;height: 568px; position: absolute; background-color:'''+config[8]+''' ">
 	<div class="atom">
     <div class="orbital">
         <div class="ruta uno">
@@ -44,12 +63,6 @@ print('''<html>
 	
 	<h1><center><p style="color:#FFFFFF">Felicidades!</p></center></h1>
 			<img src="../css/gano.gif" style="position: absolute;    width: 311px;margin-top: 109px;margin-left: -8px;">
-	
-		
-		
-
-
-
 		</body>
 	</html>	
 ''')

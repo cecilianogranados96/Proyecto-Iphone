@@ -1,9 +1,8 @@
 #!../python35/python.exe
 print ("Content-type: text/html\n")
+from funciones import * 
+config = configuraciones()
 print('''
-
-
-
 	<html>
 	<head>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>		
@@ -13,7 +12,7 @@ print('''
 		<link type="text/css" rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 	</head>
 	<body style="overflow:hidden;">
-	<div style="overflow:hidden;border-style:solid; width: 320px;height: 568px; position: absolute; background-color:#8fccaf; overflow-x: hidden;">
+	<div style="overflow:hidden;border-style:solid; width: 320px;height: 568px; position: absolute; background-color:'''+config[8]+'''; overflow-x: hidden;">
 
 	<table style='width: 100%;' >
 	<tr>
@@ -30,8 +29,13 @@ print('''
 	</table>
 
 		
-		<iframe src="manual.pdf" scrolling="no" style='width: 100%;height: 92%;position: absolute;' ></iframe>
+
+			<video width="100%" height="92%"controls>
+  <source src="manual.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
 		
+
 	</div>
 		</body>
 	</html>	

@@ -1,2 +1,3 @@
 86059879,Daniela,Alfaro,2015-11-09 20.22.57.jpg,None,TEC,TEC,None,~~~~,~~~,~~~~~~~~~
 99999999,Jhon,Doe,None,None,None,None,None,~~~~,~~~,ejmplo~2016-12-15~~~~~~~~
+86582179,Roberto,Rojas,None,None,None,None,None,None~None~None~None~,None~None~None~,~~~~~~~~~~

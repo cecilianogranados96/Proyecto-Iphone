@@ -1,8 +1,9 @@
 #!../python35/python.exe
 # -*- coding: utf-8 -*-
 print ("Content-type: text/html\n")
-from funciones import * 
 
+from funciones import * 
+config = configuraciones()
 print('''<html>
 	<head>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>		
@@ -13,7 +14,7 @@ print('''<html>
 	</head>
 	
 				
-	<div style="border-style:solid; width: 320px;height: 568px; position: absolute; background-color:#8fccaf; ">
+	<div style="border-style:solid; width: 320px;height: 568px; position: absolute; background-color:'''+config[8]+'''; ">
 	<div class="atom">
     <div class="orbital">
         <div class="ruta uno">

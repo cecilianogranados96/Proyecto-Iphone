@@ -15,8 +15,8 @@ function clock(){
 		"-o-transform":"scale(0.6) rotate("+(1-i)*30+"deg)","-ms-transform":"scale(0.6) rotate("+(1-i)*30+"deg)","transform":"scale(0.6) rotate("+(1-i)*30+"deg)"});
 	}
 	var d=new Date();
-	var weekdays=["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
-	var month=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Setiembre","Obtubre","Nobiembre",
+	var weekdays=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+	var month=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Setiembre","Octubre","Noviembre",
 	"Diciembre"];
 	var date=d.getDate(),day=weekdays[d.getDay()],mon=month[d.getMonth()];
 	$("#weekday").html(day);

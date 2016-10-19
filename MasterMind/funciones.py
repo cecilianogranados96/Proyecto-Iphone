@@ -28,31 +28,41 @@ def resultado(valores,real):
         #hay que hacer que se mesclen
         return resultado
 
-def random():
-        import random
-        elementos = ['1', '2', '3', '4', '5', '6']
-        r = open("datos/randoms.dat","a")
-        lista = []
-        infile = open('datos/randoms.dat', 'r')
-        for line in infile:
-                linea = tuple(line.split(","))
-                lista.append(linea[0])
-        x = 0
-        n = random.choice(elementos)+random.choice(elementos)+random.choice(elementos)+random.choice(elementos)              
-        while x < len(lista):
-                if str(n) == str(lista[x]):
-                        n = random.choice(elementos)+random.choice(elementos)+random.choice(elementos)+random.choice(elementos)
-                        x -= 1
-                else:
-                        resultado = r.write(n+',\n')
-                        break;
-                x += 1
-        
-        numero = (lista[len(lista)-1])
-        if len(lista) > 100:
-                infile = open('datos/randoms.dat', 'w')
-                infile.write('1234'+',\n')
-        return(numero)
+def random(valor):
+        if valor == 1:
+                import random
+                elementos = ['1', '2', '3', '4', '5', '6']
+                r = open("datos/randoms.dat","a")
+                lista = []
+                infile = open('datos/randoms.dat', 'r')
+                for line in infile:
+                        linea = tuple(line.split(","))
+                        lista.append(linea[0])
+                x = 0
+                n = random.choice(elementos)+random.choice(elementos)+random.choice(elementos)+random.choice(elementos)              
+                while x <= len(lista):
+                        if str(n) == str(lista[x]):
+                                n = random.choice(elementos)+random.choice(elementos)+random.choice(elementos)+random.choice(elementos)
+                                x -= 1
+                        else:
+                                resultado = r.write(n+',\n')
+                                break;
+                        x += 1
+                
+                numero = (lista[len(lista)-1])
+                if len(lista) > 100:
+                        infile = open('datos/randoms.dat', 'w')
+                        infile.write('1234'+',\n')
+                return(numero)
+        else:
+              infile = open('datos/randoms.dat', 'r')
+              randon = []
+              n = 0
+              for x in infile:
+                      randon.append(x)
+                      n += 1 
+              return(randon[n-2])
+
 
 def juego_actual(orden):
         infile = open('datos/actual.dat', 'a')
@@ -132,10 +142,34 @@ def modalidades_detalle():
         dificil.sort(key=lambda x:x[1])
         return(facil[:10],medio[:10],dificil[:10])
 
+def juego_multi():
+        config = open("datos/config.dat","r")
+        datos = config.read().split(",")
+        
+        r = ""
+        if (int(datos[1]) == 3 ):
+                if int(datos[1]) == 2:
+                        datos[1] = 3
+                else:
+                        datos[1] = 1 
+        else:
+                if int(datos[1]) == 1:
+                        datos[1] = 2
+                else:
+                        datos[1] = 3
 
+        config2 = open("datos/config.dat","w")
+        config2.write(datos[0]+","+str(datos[1])+","+datos[2]+","+datos[3]+","+datos[4]+","+datos[5]+","+datos[6]+","+datos[7]+","+datos[8])
 
+def carga():
+        infile = open('datos/actual.dat', 'r')
+        ar = ""
+        for x in infile:
+                s = x.split(",")
+                ar = ar + "'"+s[0]+','+s[1]+','+s[2]+','+s[3]+"',"
+        return(ar[0:-1])
 
-
-
-
+def reestablecer():
+        config2 = open("datos/config.dat","w")
+        config2.write("Usuario,1,1,2,1,60,300,300,#8fccaf")
 
